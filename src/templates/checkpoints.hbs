@@ -1,0 +1,17 @@
+<header class="button heightfifth">
+    <h1>{{name}}</h1>
+</header>
+
+<a href="#" id="btnAdd" class="button heightfifth orange fixed"><span>Add checkpoint</span></a>
+
+<a class="btnTrip button first heightfifth"></a>
+
+{{#each checkpoints}}
+    <a href="{{id}}" class="btnCheckpoint button first heightfifth"><span>{{checkpoint}}</span></a>
+{{/each}}
+
+<a class="btnTrip button first heightfifth"></a>
+
+
+<a href="{{id}}" id="btnClose"><span data-icon="&#xe002;"></span></a>
+
