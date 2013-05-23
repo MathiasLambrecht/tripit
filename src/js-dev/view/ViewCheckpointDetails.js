@@ -1,3 +1,4 @@
+/* globals Util:true */
 var ViewCheckpointDetails = Backbone.View.extend
 ({
     id:'content',
@@ -11,7 +12,25 @@ var ViewCheckpointDetails = Backbone.View.extend
 
     events:
     {
-        'click #btnClose': 'btnCloseHandler'
+        'click #btnClose': 'btnCloseHandler',
+        'click #btnDelete': 'btnDeleteHandler'
+    },
+
+    btnDeleteHandler: function(e)
+    {
+        e.preventDefault();
+
+        var self = this;
+
+        $.ajax
+        ({
+            url: Util.api + '/deletecheckpoint/' + $(e.currentTarget).attr('href'),
+            type: 'delete',
+            success: function(res)
+            {
+                self.trigger('delete_done', $.cookie('tripId'));
+            }
+        });
     },
 
     btnCloseHandler: function(e)

@@ -43,4 +43,17 @@ class DAOcheckpoints
             return true;
         }
     }
+
+    public function deleteCheckpoint($checkpointId)
+    {
+        $sql = 'DELETE FROM checkpoints WHERE id = :checkpoint_id';
+
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue(':checkpoint_id', $checkpointId);
+
+        if($stmt->execute())
+        {
+            return true;
+        }
+    }
 }

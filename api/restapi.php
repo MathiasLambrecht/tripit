@@ -8,6 +8,7 @@ require_once WWW_ROOT. "api" .DIRECTORY_SEPARATOR. 'Slim'. DIRECTORY_SEPARATOR .
 require_once(WWW_ROOT.'dao'.DIRECTORY_SEPARATOR.'DAOuser.php');
 require_once(WWW_ROOT.'dao'.DIRECTORY_SEPARATOR.'DAOtrips.php');
 require_once(WWW_ROOT.'dao'.DIRECTORY_SEPARATOR.'DAOcheckpoints.php');
+require_once(WWW_ROOT.'dao'.DIRECTORY_SEPARATOR.'DAOusertrips.php');
 
 $app = new Slim();
 
@@ -15,10 +16,13 @@ $app->post('/login', 'login');
 $app->post('/register', 'register');
 $app->post('/newtrip', 'newtrip');
 $app->post('/newcheckpoint', 'newcheckpoint');
+$app->post('/newusertrip', 'newusertrip');
 
 $app->get('/trips/:userid', 'trips');
+$app->get('/users', 'users');
 
 $app->delete('/deletetrip/:tripid', 'deletetrip');
+$app->delete('/deletecheckpoint/:checkpointid', 'deletecheckpoint');
 
 $app->run();
 
@@ -54,6 +58,14 @@ function newcheckpoint()
     exit;
 }
 
+function newusertrip()
+{
+    $data = (array) json_decode(Slim::getInstance()->request()->getBody());
+    $daoUserTrips = new DAOusertrips();
+    echo json_encode($daoUserTrips->addUserTrip($data['userid'], $data['tripid']));
+    exit;
+}
+
 function trips($userId)
 {
     $daoTrips = new DAOtrips();
@@ -61,10 +73,24 @@ function trips($userId)
     exit;
 }
 
+function users()
+{
+    $daoUser = new DAOuser();
+    echo json_encode($daoUser->getAllUsers());
+    exit;
+}
+
 function deletetrip($tripId)
 {
     $daoTrips = new DAOtrips();
     echo json_encode($daoTrips->deleteTrip($tripId));
+    exit;
+}
+
+function deletecheckpoint($checkpointId)
+{
+    $daoCheckpoints = new DAOcheckpoints();
+    echo json_encode($daoCheckpoints->deleteCheckpoint($checkpointId));
     exit;
 }
 

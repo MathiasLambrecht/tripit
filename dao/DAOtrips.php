@@ -60,10 +60,12 @@ class DAOtrips
 
     public function getTrips($userId)
     {
-        $sql = 'SELECT * FROM trips
-                INNER JOIN (SELECT user_id, trip_id FROM usertrips) as usertrips
-                ON usertrips.user_id = :user_id
-                AND usertrips.trip_id = trips.id';
+        $sql = 'SELECT trips.* FROM users
+                INNER JOIN usertrips
+                ON users.id = usertrips.user_id
+                INNER JOIN trips
+                ON usertrips.trip_id = trips.id
+                WHERE users.id = :user_id';
 
         $stmt = $this->dbh->prepare($sql);
         $stmt->bindValue(':user_id', $userId);

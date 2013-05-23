@@ -2,16 +2,17 @@
     <h1>{{name}}</h1>
 </header>
 
-<a href="#" id="btnAdd" class="button heightfifth orange fixed"><span>Add a friend</span></a>
+<input type="text" name="txtSearch" id="txtSearch" placeholder="Add a friend..." class="button heightfifth orange fixed" />
 
-<a class="btnTrip button first heightfifth"></a>
+<p class="button black heightfifth"></p>
+
+<ul id="searchresults"></ul>
 
 {{#each friends}}
     <a href="{{id}}" class="btnCheckpoint button first heightfifth"><span>{{username}}</span></a>
 {{/each}}
 
-<a class="btnTrip button first heightfifth"></a>
-
+<p class="button black heightfifth"></p>
 
 <a href="{{id}}" id="btnClose"><span data-icon="&#xe002;"></span></a>
 

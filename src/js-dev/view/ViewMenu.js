@@ -38,6 +38,7 @@ var ViewMenu = Backbone.View.extend
         $.removeCookie('isLoggedIn', {path: '/'});
         $.removeCookie('user', {path: '/'});
         $.removeCookie('userId', {path: '/'});
+        $.removeCookie('tripId', {path: '/'});
 
         this.trigger('logout_done');
     },

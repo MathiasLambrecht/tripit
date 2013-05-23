@@ -43,11 +43,14 @@ var ViewLogin = Backbone.View.extend
             data: data,
             success: function(data)
             {
-                $.cookie('isLoggedIn', true, {path: '/'});
-                $.cookie('user', data[0]['username'], {path: '/'});
-                $.cookie('userId', data[0]['id'], {path: '/'});
+                if(data.length > 0)
+                {
+                    $.cookie('isLoggedIn', true, {path: '/'});
+                    $.cookie('user', data[0]['username'], {path: '/'});
+                    $.cookie('userId', data[0]['id'], {path: '/'});
 
-                self.trigger('login_done');
+                    self.trigger('login_done');
+                }
             },
             error: function()
             {

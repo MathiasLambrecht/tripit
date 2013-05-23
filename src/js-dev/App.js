@@ -1,6 +1,6 @@
 /*globals ViewLogin:true, ViewTrips:true, ViewRegister:true, ViewMenu:true, ViewTrip:true, ViewCheckpoints:true, ViewCheckpointDetails, ViewFriends:true */
 /*globals ViewNewTrip:true, ViewNewCheckpoint:true */
-/*globals CollectionTrips:true */
+/*globals CollectionTrips:true, CollectionUsers:true */
 /*globals ModelTrip:true*/
 /*globals Util:true*/
 
@@ -15,7 +15,13 @@ var App = Backbone.View.extend
         _.bindAll(this);
 
         this.collectionTrips = new CollectionTrips();
-        this.fetchCollection();
+        if($.cookie('isLoggedIn'))
+        {
+            this.fetchCollection();
+        }
+
+        this.collectionUsers = new CollectionUsers();
+        this.collectionUsers.fetch({async: false});
     },
 
     showLoginHandler: function()
@@ -98,9 +104,8 @@ var App = Backbone.View.extend
     friendsHandler: function($trip_id)
     {
         var modelFriends = this.collectionTrips.findWhere({id: $trip_id});
-        this.viewFriends = new ViewFriends({model: modelFriends});
+        this.viewFriends = new ViewFriends({model: modelFriends, collection:this.collectionUsers});
         this.$el.html(this.viewFriends.render().$el);
-
         this.showMenu();
     },
 
@@ -114,7 +119,7 @@ var App = Backbone.View.extend
         this.viewCheckpointDetails = new ViewCheckpointDetails({model: checkpointDetails});
         this.$el.html(this.viewCheckpointDetails.render().$el);
         this.viewCheckpointDetails.on('close_clicked', this.checkpointsHandler);
-
+        this.viewCheckpointDetails.on('delete_done', this.checkpointsHandler);
         this.showMenu();
     },
 

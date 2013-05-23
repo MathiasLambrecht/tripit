@@ -44,13 +44,28 @@ class DAOuser
 
     public function getUsers($tripId)
     {
-        $sql = 'SELECT * FROM users
-                INNER JOIN (SELECT user_id, trip_id FROM usertrips) as usertrips
-                ON usertrips.trip_id = :trip_id';
+        $sql = 'SELECT users.id, users.username FROM users
+                INNER JOIN usertrips
+                ON users.id = usertrips.user_id
+                INNER JOIN trips
+                ON usertrips.trip_id = trips.id
+                WHERE trips.id = :trip_id';
 
         $stmt = $this->dbh->prepare($sql);
 
         $stmt->bindValue(':trip_id', $tripId);
+
+        if($stmt->execute())
+        {
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+
+    public function getAllUsers()
+    {
+        $sql = 'SELECT id, username FROM users';
+
+        $stmt = $this->dbh->prepare($sql);
 
         if($stmt->execute())
         {

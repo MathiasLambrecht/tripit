@@ -8,8 +8,6 @@ var ViewTrips = Backbone.View.extend
     initialize: function()
     {
         _.bindAll(this);
-
-        this.collection.on("sync reset", this.render);
     },
 
     events:

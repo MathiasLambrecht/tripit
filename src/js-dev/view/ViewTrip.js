@@ -60,8 +60,6 @@ var ViewTrip = Backbone.View.extend
                 self.trigger('delete_done');
             }
         });
-
-        this.trigger('delete_clicked', $(e.currentTarget).attr('href'));
     },
 
     render: function()
