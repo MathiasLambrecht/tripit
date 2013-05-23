@@ -391,6 +391,11 @@ a > span {
 }
 
 /* line 295, ../sass/screen.scss */
+.heightquarter {
+  height: 25%;
+}
+
+/* line 300, ../sass/screen.scss */
 .fixed {
   position: fixed;
   bottom: 0;

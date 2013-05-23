@@ -14,7 +14,15 @@ var ViewTrips = Backbone.View.extend
 
     events:
     {
-        'click .btnTrip': 'tripClickHandler'
+        'click .btnTrip': 'tripClickHandler',
+        'click #btnAdd': 'btnAddClickHandler'
+    },
+
+    btnAddClickHandler: function(e)
+    {
+        e.preventDefault();
+
+        this.trigger('add_trip_clicked');
     },
 
     tripClickHandler: function(e)

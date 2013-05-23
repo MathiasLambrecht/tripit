@@ -1,11 +1,14 @@
+/* globals Util:true */
 var ModelNewTrip = Backbone.Model.extend
 ({
     defaults:
     {
-        id: null,
         name: undefined,
         startpoint: undefined,
         startdate: undefined,
-        starttime: undefined
-    }
+        starttime: undefined,
+        userid: undefined
+    },
+
+    url: Util.api + '/newtrip'
 });

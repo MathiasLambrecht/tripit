@@ -7,8 +7,6 @@ var ViewFriends = Backbone.View.extend
     initialize: function()
     {
         _.bindAll(this);
-        
-        console.log(this.model.toJSON());
     },
 
     render: function()

@@ -24,4 +24,23 @@ class DAOcheckpoints
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     }
+
+    public function addNewCheckpoint($data)
+    {
+        $sql = 'INSERT INTO checkpoints(checkpoint, trip_id, cost, distance, time, transport)
+                VALUES (:checkpoint, :trip_id, :cost, :distance, :time, :transport)';
+
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue(':checkpoint', $data['checkpoint']);
+        $stmt->bindValue(':trip_id', $data['tripid']);
+        $stmt->bindValue(':cost', $data['cost']);
+        $stmt->bindValue(':distance', $data['distance']);
+        $stmt->bindValue(':time', $data['time']);
+        $stmt->bindValue(':transport', $data['transport']);
+
+        if($stmt->execute())
+        {
+            return true;
+        }
+    }
 }

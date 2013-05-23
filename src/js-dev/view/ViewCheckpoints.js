@@ -12,7 +12,15 @@ var ViewCheckpoints = Backbone.View.extend
     events:
     {
         'click #btnClose': 'bntCloseHandler',
-        'click .btnCheckpoint': 'checkPointClickHandler'
+        'click .btnCheckpoint': 'checkPointClickHandler',
+        'click #btnAdd': 'btnAddClickHandler'
+    },
+
+    btnAddClickHandler: function(e)
+    {
+        e.preventDefault();
+
+        this.trigger('add_clicked');
     },
 
     checkPointClickHandler: function(e)

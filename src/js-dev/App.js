@@ -1,5 +1,6 @@
 /*globals ViewLogin:true, ViewTrips:true, ViewRegister:true, ViewMenu:true, ViewTrip:true, ViewCheckpoints:true, ViewCheckpointDetails, ViewFriends:true */
-/*globals CollectionTrips:true*/
+/*globals ViewNewTrip:true, ViewNewCheckpoint:true */
+/*globals CollectionTrips:true */
 /*globals ModelTrip:true*/
 /*globals Util:true*/
 
@@ -14,7 +15,7 @@ var App = Backbone.View.extend
         _.bindAll(this);
 
         this.collectionTrips = new CollectionTrips();
-        this.collectionTrips.fetch();
+        this.fetchCollection();
     },
 
     showLoginHandler: function()
@@ -35,12 +36,26 @@ var App = Backbone.View.extend
 
     showTripsHandler: function()
     {
-        this.collectionTrips = new CollectionTrips();
-        this.collectionTrips.fetch();
+        this.fetchCollection();
         this.viewTrips = new ViewTrips({collection: this.collectionTrips});
         this.$el.html(this.viewTrips.render().$el);
         this.viewTrips.on('trip_clicked', this.loadTripOverview);
+        this.viewTrips.on('add_trip_clicked', this.addTripClickHandler);
 
+        this.showMenu();
+    },
+
+    fetchCollection: function()
+    {
+        this.collectionTrips.fetch({async: false});
+    },
+
+    addTripClickHandler: function()
+    {
+        this.viewNewTrip = new ViewNewTrip();
+        this.$el.html(this.viewNewTrip.render().$el);
+        this.viewNewTrip.on('close_clicked', this.showTripsHandler);
+        this.viewNewTrip.on('trip_added', this.showTripsHandler);
         this.showMenu();
     },
 
@@ -54,18 +69,29 @@ var App = Backbone.View.extend
         this.viewTrip.on('basics_clicked', this.basicsHandler);
         this.viewTrip.on('delete_clicked', this.deleteHandler);
         this.viewTrip.on('close_clicked', this.showTripsHandler);
+        this.viewTrip.on('delete_done', this.showTripsHandler);
 
         this.showMenu();
     },
 
     checkpointsHandler: function($trip_id)
     {
+        this.fetchCollection();
         var modelCheckpoints = this.collectionTrips.findWhere({id: $trip_id});
         this.viewCheckpoints = new ViewCheckpoints({model: modelCheckpoints});
         this.$el.html(this.viewCheckpoints.render().$el);
         this.viewCheckpoints.on('close_clicked', this.loadTripOverview);
         this.viewCheckpoints.on('checkpoint_clicked', this.loadCheckPointDetails);
+        this.viewCheckpoints.on('add_clicked', this.loadNewCheckpointHandler);
+        this.showMenu();
+    },
 
+    loadNewCheckpointHandler: function()
+    {
+        this.viewNewCheckpoint = new ViewNewCheckpoint();
+        this.$el.html(this.viewNewCheckpoint.render().$el);
+        this.viewNewCheckpoint.on('close_clicked', this.checkpointsHandler);
+        this.viewNewCheckpoint.on('checkpoint_added', this.checkpointsHandler);
         this.showMenu();
     },
 
@@ -79,11 +105,6 @@ var App = Backbone.View.extend
     },
 
     basicsHandler: function($trip_id)
-    {
-
-    },
-
-    deleteHandler: function($trip_id)
     {
 
     },

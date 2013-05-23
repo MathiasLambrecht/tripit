@@ -26,6 +26,8 @@ var ViewLogin = Backbone.View.extend
 
     loginClickHandler: function(e)
     {
+        var self = this;
+
         e.preventDefault();
 
         var data = new Object
@@ -45,14 +47,13 @@ var ViewLogin = Backbone.View.extend
                 $.cookie('user', data[0]['username'], {path: '/'});
                 $.cookie('userId', data[0]['id'], {path: '/'});
 
+                self.trigger('login_done');
             },
             error: function()
             {
                 console.log(arguments);
             }
         });
-
-        this.trigger('login_done');
     },
 
     render: function()

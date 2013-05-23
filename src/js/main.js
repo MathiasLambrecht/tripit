@@ -43,7 +43,16 @@ helpers = helpers || Handlebars.helpers; data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\n    <a href=\"";
+  buffer += "\n    <a class=\"btnTrip button first heightfifth\"></a>\n\n    ";
+  stack1 = helpers.each.call(depth0, depth0.checkpoints, {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n";
+  return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n        <a href=\"";
   if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
@@ -51,7 +60,7 @@ function program1(depth0,data) {
   if (stack1 = helpers.checkpoint) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.checkpoint; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</span></a>\n";
+    + "</span></a>\n    ";
   return buffer;
   }
 
@@ -59,10 +68,10 @@ function program1(depth0,data) {
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</h1>\n</header>\n\n<a href=\"#\" id=\"btnAdd\" class=\"button heightfifth orange fixed\"><span>Add checkpoint</span></a>\n\n<a class=\"btnTrip button first heightfifth\"></a>\n\n";
-  stack1 = helpers.each.call(depth0, depth0.checkpoints, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+    + "</h1>\n</header>\n\n<a href=\"#\" id=\"btnAdd\" class=\"button heightfifth orange fixed\"><span>Add checkpoint</span></a>\n\n";
+  stack1 = helpers['if'].call(depth0, depth0.checkpoints, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n\n<a class=\"btnTrip button first heightfifth\"></a>\n\n\n<a href=\"";
+  buffer += "\n\n<a class=\"btnTrip button first heightfifth\"></a>\n\n<a href=\"";
   if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
@@ -128,6 +137,24 @@ helpers = helpers || Handlebars.helpers; data = data || {};
   return buffer;
   });
 
+this["tpl"]["newcheckpoint"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [3,'>= 1.0.0-rc.4'];
+helpers = helpers || Handlebars.helpers; data = data || {};
+  
+
+
+  return "<form action=\"/login\" method=\"post\">\n    <fieldset>\n        <input type=\"text\" name=\"txtCheckpoint\" id=\"txtCheckpoint\" tabindex=\"1\" placeholder=\"Name\" class=\"button heightthird black\" />\n        <input type=\"text\" name=\"txtCost\" id=\"txtCost\" tabindex=\"2\"  placeholder=\"Costs\" class=\"button heightquarter first\" />\n        <input type=\"date\" name=\"txtDistance\" id=\"txtDistance\" tabindex=\"3\" placeholder=\"Distance\" class=\"button heightquarter second\" />\n        <input type=\"time\" name=\"txtTime\" id=\"txtTime\" tabindex=\"4\" placeholder=\"Time\" class=\"button heightquarter third\" />\n        <input type=\"text\" name=\"txtTransport\" id=\"txtTransport\" tabindex=\"5\" placeholder=\"Transport\" class=\"button heightquarter fourth\" />\n\n        <input type=\"submit\" name=\"btnSubmit\" id=\"btnSubmit\" tabindex=\"6\" value=\"Add checkpoint\" class=\"button heightthird orange\" />\n    </fieldset>\n</form>\n\n<a href=\"#\" id=\"btnClose\"><span data-icon=\"&#xe002;\"></span></a>\n";
+  });
+
+this["tpl"]["newtrip"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [3,'>= 1.0.0-rc.4'];
+helpers = helpers || Handlebars.helpers; data = data || {};
+  
+
+
+  return "<form action=\"/login\" method=\"post\">\n    <fieldset>\n        <input type=\"text\" name=\"txtName\" id=\"txtName\" tabindex=\"1\" placeholder=\"Name\" class=\"button heightthird first black\" />\n        <input type=\"text\" name=\"txtPoint\" id=\"txtPoint\" tabindex=\"2\"  placeholder=\"Startpoint\" class=\"button heightthird first\" />\n        <input type=\"date\" name=\"txtDate\" id=\"txtDate\" tabindex=\"3\" placeholder=\"Start date\" class=\"button heightthird second\" />\n        <input type=\"time\" name=\"txtTime\" id=\"txtTime\" tabindex=\"4\" placeholder=\"Start time\" class=\"button heightthird third\" />\n        <input type=\"submit\" name=\"btnSubmit\" id=\"btnSubmit\" tabindex=\"5\" value=\"Add trip\" class=\"button heightthird orange\" />\n    </fieldset>\n</form>\n\n<a href=\"#\" id=\"btnClose\"><span data-icon=\"&#xe002;\"></span></a>\n";
+  });
+
 this["tpl"]["register"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [3,'>= 1.0.0-rc.4'];
 helpers = helpers || Handlebars.helpers; data = data || {};
@@ -175,7 +202,7 @@ helpers = helpers || Handlebars.helpers; data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\n    <a href=\"";
+  buffer += "\n        <a href=\"";
   if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
@@ -183,14 +210,14 @@ function program1(depth0,data) {
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</span></a>\n";
+    + "</span></a>\n    ";
   return buffer;
   }
 
-  buffer += "<header class=\"button heightfifth\">\n    <h1>Trips</h1>\n</header>\n\n<a href=\"#\" id=\"btnAdd\" class=\"button heightfifth orange fixed\"><span>Add trip</span></a>\n\n<a class=\"btnTrip button first heightfifth\"></a>\n\n";
+  buffer += "<header class=\"button heightfifth\">\n    <h1>Trips</h1>\n</header>\n\n<a href=\"#\" id=\"btnAdd\" class=\"button heightfifth orange fixed\"><span>Add trip</span></a>\n\n<a class=\"btnTrip button first heightfifth\"></a>\n\n    ";
   stack1 = helpers.each.call(depth0, depth0.trips, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n\n\n";
+  buffer += "\n\n\n\n\n";
   return buffer;
   });
 
@@ -205,16 +232,35 @@ var Util = (function()
 })();
 
 
+/* globals Util:true */
+var ModelNewCheckpoint = Backbone.Model.extend
+({
+    defaults:
+    {
+        checkpoint: undefined,
+        tripid: null,
+        cost: undefined,
+        distance: undefined,
+        time: undefined,
+        transport: undefined
+    },
+
+    url: Util.api + '/newcheckpoint'
+});
+
+/* globals Util:true */
 var ModelNewTrip = Backbone.Model.extend
 ({
     defaults:
     {
-        id: null,
         name: undefined,
         startpoint: undefined,
         startdate: undefined,
-        starttime: undefined
-    }
+        starttime: undefined,
+        userid: undefined
+    },
+
+    url: Util.api + '/newtrip'
 });
 
 var ModelTrip = Backbone.Model.extend
@@ -275,7 +321,15 @@ var ViewCheckpoints = Backbone.View.extend
     events:
     {
         'click #btnClose': 'bntCloseHandler',
-        'click .btnCheckpoint': 'checkPointClickHandler'
+        'click .btnCheckpoint': 'checkPointClickHandler',
+        'click #btnAdd': 'btnAddClickHandler'
+    },
+
+    btnAddClickHandler: function(e)
+    {
+        e.preventDefault();
+
+        this.trigger('add_clicked');
     },
 
     checkPointClickHandler: function(e)
@@ -312,8 +366,6 @@ var ViewFriends = Backbone.View.extend
     initialize: function()
     {
         _.bindAll(this);
-        
-        console.log(this.model.toJSON());
     },
 
     render: function()
@@ -351,6 +403,8 @@ var ViewLogin = Backbone.View.extend
 
     loginClickHandler: function(e)
     {
+        var self = this;
+
         e.preventDefault();
 
         var data = new Object
@@ -370,14 +424,13 @@ var ViewLogin = Backbone.View.extend
                 $.cookie('user', data[0]['username'], {path: '/'});
                 $.cookie('userId', data[0]['id'], {path: '/'});
 
+                self.trigger('login_done');
             },
             error: function()
             {
                 console.log(arguments);
             }
         });
-
-        this.trigger('login_done');
     },
 
     render: function()
@@ -445,6 +498,117 @@ var ViewMenu = Backbone.View.extend
     }
 });
 
+/* globals ModelNewCheckpoint:true */
+
+var ViewNewCheckpoint = Backbone.View.extend
+({
+    id:'content',
+    tagName: 'div',
+    template: tpl.newcheckpoint,
+
+    initialize: function()
+    {
+        _.bindAll(this);
+    },
+
+    events:
+    {
+        'click #btnClose': 'btnCloseHandler',
+        'click #btnSubmit': 'addHandler'
+    },
+
+    btnCloseHandler: function(e)
+    {
+        e.preventDefault();
+
+        this.trigger('close_clicked', $.cookie('tripId'));
+    },
+
+    addHandler: function(e)
+    {
+        e.preventDefault();
+
+        var modelNewCheckpoint = new ModelNewCheckpoint
+        ({
+            checkpoint: $('#txtCheckpoint').val(),
+            tripid: $.cookie('tripId'),
+            cost: $('#txtCost').val(),
+            distance: $('#txtDistance').val(),
+            time: $('#txtTime').val(),
+            transport: $('#txtTransport').val()
+        });
+
+        var self = this;
+
+        modelNewCheckpoint.save({}, {success: function(req, res)
+        {
+            console.log(req);
+
+            self.trigger('checkpoint_added', $.cookie('tripId'));
+        }});
+    },
+
+    render: function()
+    {
+        this.$el.append(this.template());
+        return this;
+    }
+});
+
+/* globals ModelNewTrip:true */
+
+var ViewNewTrip = Backbone.View.extend
+({
+    id:'content',
+    tagName: 'div',
+    template: tpl.newtrip,
+
+    initialize: function ()
+    {
+        _.bindAll(this);
+    },
+
+    events:
+    {
+        'click #btnClose': 'btnCloseHandler',
+        'click #btnSubmit': 'btnSubmitClickHandler'
+    },
+
+    btnSubmitClickHandler: function(e)
+    {
+        e.preventDefault();
+
+        var modelNewTrip = new ModelNewTrip
+        ({
+            name: $('#txtName').val(),
+            startpoint: $('#txtPoint').val(),
+            startdate: $('#txtDate').val(),
+            starttime: $('#txtTime').val(),
+            userid: $.cookie('userId')
+        });
+
+        var self = this;
+
+        modelNewTrip.save({}, {success: function()
+        {
+            self.trigger('trip_added');
+        }});
+    },
+
+    btnCloseHandler: function(e)
+    {
+        e.preventDefault();
+
+        this.trigger('close_clicked');
+    },
+
+    render: function ()
+    {
+        this.$el.append(this.template());
+        return this;
+    }
+});
+
 /*globals Util:true */
 
 var ViewRegister = Backbone.View.extend
@@ -507,6 +671,7 @@ var ViewRegister = Backbone.View.extend
     }
 });
 
+/* globals Util:true */
 var ViewTrip = Backbone.View.extend
 ({
     id: 'content',
@@ -516,6 +681,8 @@ var ViewTrip = Backbone.View.extend
     initialize: function()
     {
         _.bindAll(this);
+
+        $.cookie('tripId', this.model.get('id'));
     },
 
     events:
@@ -530,14 +697,12 @@ var ViewTrip = Backbone.View.extend
     closeClickHandler: function(e)
     {
         e.preventDefault();
-
         this.trigger('close_clicked');
     },
 
     checkPointsClickHandler: function(e)
     {
         e.preventDefault();
-
         this.trigger('checkpoints_clicked', $(e.currentTarget).attr('href'));
     },
 
@@ -556,6 +721,19 @@ var ViewTrip = Backbone.View.extend
     deleteClickHandler: function(e)
     {
         e.preventDefault();
+
+        var self = this;
+
+        $.ajax
+        ({
+            url: Util.api + '/deletetrip/' + $(e.currentTarget).attr('href'),
+            type: 'delete',
+            success: function(res)
+            {
+                self.trigger('delete_done');
+            }
+        });
+
         this.trigger('delete_clicked', $(e.currentTarget).attr('href'));
     },
 
@@ -582,7 +760,15 @@ var ViewTrips = Backbone.View.extend
 
     events:
     {
-        'click .btnTrip': 'tripClickHandler'
+        'click .btnTrip': 'tripClickHandler',
+        'click #btnAdd': 'btnAddClickHandler'
+    },
+
+    btnAddClickHandler: function(e)
+    {
+        e.preventDefault();
+
+        this.trigger('add_trip_clicked');
     },
 
     tripClickHandler: function(e)
@@ -600,8 +786,6 @@ var ViewTrips = Backbone.View.extend
     }
 });
 
-
-
 /* globals ModelTrip:true, Util:true */
 var CollectionTrips = Backbone.Collection.extend
 ({
@@ -611,7 +795,8 @@ var CollectionTrips = Backbone.Collection.extend
 
 
 /*globals ViewLogin:true, ViewTrips:true, ViewRegister:true, ViewMenu:true, ViewTrip:true, ViewCheckpoints:true, ViewCheckpointDetails, ViewFriends:true */
-/*globals CollectionTrips:true*/
+/*globals ViewNewTrip:true, ViewNewCheckpoint:true */
+/*globals CollectionTrips:true */
 /*globals ModelTrip:true*/
 /*globals Util:true*/
 
@@ -626,7 +811,7 @@ var App = Backbone.View.extend
         _.bindAll(this);
 
         this.collectionTrips = new CollectionTrips();
-        this.collectionTrips.fetch();
+        this.fetchCollection();
     },
 
     showLoginHandler: function()
@@ -647,12 +832,26 @@ var App = Backbone.View.extend
 
     showTripsHandler: function()
     {
-        this.collectionTrips = new CollectionTrips();
-        this.collectionTrips.fetch();
+        this.fetchCollection();
         this.viewTrips = new ViewTrips({collection: this.collectionTrips});
         this.$el.html(this.viewTrips.render().$el);
         this.viewTrips.on('trip_clicked', this.loadTripOverview);
+        this.viewTrips.on('add_trip_clicked', this.addTripClickHandler);
 
+        this.showMenu();
+    },
+
+    fetchCollection: function()
+    {
+        this.collectionTrips.fetch({async: false});
+    },
+
+    addTripClickHandler: function()
+    {
+        this.viewNewTrip = new ViewNewTrip();
+        this.$el.html(this.viewNewTrip.render().$el);
+        this.viewNewTrip.on('close_clicked', this.showTripsHandler);
+        this.viewNewTrip.on('trip_added', this.showTripsHandler);
         this.showMenu();
     },
 
@@ -666,18 +865,29 @@ var App = Backbone.View.extend
         this.viewTrip.on('basics_clicked', this.basicsHandler);
         this.viewTrip.on('delete_clicked', this.deleteHandler);
         this.viewTrip.on('close_clicked', this.showTripsHandler);
+        this.viewTrip.on('delete_done', this.showTripsHandler);
 
         this.showMenu();
     },
 
     checkpointsHandler: function($trip_id)
     {
+        this.fetchCollection();
         var modelCheckpoints = this.collectionTrips.findWhere({id: $trip_id});
         this.viewCheckpoints = new ViewCheckpoints({model: modelCheckpoints});
         this.$el.html(this.viewCheckpoints.render().$el);
         this.viewCheckpoints.on('close_clicked', this.loadTripOverview);
         this.viewCheckpoints.on('checkpoint_clicked', this.loadCheckPointDetails);
+        this.viewCheckpoints.on('add_clicked', this.loadNewCheckpointHandler);
+        this.showMenu();
+    },
 
+    loadNewCheckpointHandler: function()
+    {
+        this.viewNewCheckpoint = new ViewNewCheckpoint();
+        this.$el.html(this.viewNewCheckpoint.render().$el);
+        this.viewNewCheckpoint.on('close_clicked', this.checkpointsHandler);
+        this.viewNewCheckpoint.on('checkpoint_added', this.checkpointsHandler);
         this.showMenu();
     },
 
@@ -691,11 +901,6 @@ var App = Backbone.View.extend
     },
 
     basicsHandler: function($trip_id)
-    {
-
-    },
-
-    deleteHandler: function($trip_id)
     {
 
     },
