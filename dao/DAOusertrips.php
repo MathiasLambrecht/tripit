@@ -39,4 +39,20 @@ class DAOusertrips
             return true;
         }
     }
+
+    public function deleteUserTripByUserAndTrip($userId, $tripId)
+    {
+        $sql = 'DELETE FROM usertrips
+                WHERE trip_id = :trip_id
+                AND user_id = :user_id';
+
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue(':trip_id', $tripId);
+        $stmt->bindValue(':user_id', $userId);
+
+        if($stmt->execute())
+        {
+            return true;
+        }
+    }
 }

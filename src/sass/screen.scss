@@ -335,6 +335,7 @@ a > span
   {
     text-align: center;
     background-color: rgba(#f2e9ce, 0.95) !important;
+    border-bottom: 1px solid #2f3031;
   }
 
   a
@@ -350,4 +351,9 @@ a > span
 {
   display: inline;
   margin-left: 3%;
+}
+
+.closer
+{
+  margin-left: 1%;
 }

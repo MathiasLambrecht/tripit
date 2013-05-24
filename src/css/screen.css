@@ -434,8 +434,9 @@ a > span {
 #searchresults li {
   text-align: center;
   background-color: rgba(242, 233, 206, 0.95) !important;
+  border-bottom: 1px solid #2f3031;
 }
-/* line 341, ../sass/screen.scss */
+/* line 342, ../sass/screen.scss */
 #searchresults a {
   color: #2f3031;
   display: block;
@@ -443,8 +444,13 @@ a > span {
   width: 96%;
 }
 
-/* line 350, ../sass/screen.scss */
+/* line 351, ../sass/screen.scss */
 .spanicon {
   display: inline;
   margin-left: 3%;
+}
+
+/* line 357, ../sass/screen.scss */
+.closer {
+  margin-left: 1%;
 }

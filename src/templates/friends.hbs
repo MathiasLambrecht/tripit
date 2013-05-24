@@ -1,5 +1,5 @@
 <header class="button heightfifth">
-    <h1>{{name}}</h1>
+    <h1>{{name}}<span class="spanicon closer" data-icon="&#xe008;"></span></h1>
 </header>
 
 <input type="text" name="txtSearch" id="txtSearch" placeholder="Add a friend..." class="button heightfifth orange fixed" />
@@ -9,7 +9,7 @@
 <ul id="searchresults"></ul>
 
 {{#each friends}}
-    <a href="{{id}}" class="btnCheckpoint button first heightfifth"><span>{{username}}</span></a>
+    <a href="{{id}}" class="btnDelete button first heightfifth"><span>{{username}}<span class="spanicon closer" data-icon="&#xe002;"></span></span></a>
 {{/each}}
 
 <p class="button black heightfifth"></p>

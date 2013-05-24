@@ -24,7 +24,7 @@ var ViewCheckpointDetails = Backbone.View.extend
 
         $.ajax
         ({
-            url: Util.api + '/deletecheckpoint/' + $(e.currentTarget).attr('href'),
+            url: Util.api + '/deletecheckpoint/' + $(e.currentTarget).attr('href') + '/' + $.cookie('userId'),
             type: 'delete',
             success: function(res)
             {

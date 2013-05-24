@@ -23,6 +23,7 @@ $app->get('/users', 'users');
 
 $app->delete('/deletetrip/:tripid', 'deletetrip');
 $app->delete('/deletecheckpoint/:checkpointid', 'deletecheckpoint');
+$app->delete('/deleteusertrip/:userid/:tripid', 'deleteusertrip');
 
 $app->run();
 
@@ -94,3 +95,9 @@ function deletecheckpoint($checkpointId)
     exit;
 }
 
+function deleteusertrip($userId, $tripId)
+{
+    $daoUserTrips = new DAOusertrips();
+    echo json_encode($daoUserTrips->deleteUserTripByUserAndTrip($userId, $tripId));
+    exit;
+}

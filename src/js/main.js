@@ -28,7 +28,7 @@ helpers = helpers || Handlebars.helpers; data = data || {};
 
   buffer += "<header class=\"button heightfifth\">\n    <h1>"
     + escapeExpression(((stack1 = ((stack1 = depth0.details),stack1 == null || stack1 === false ? stack1 : stack1.checkpoint)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</h1>\n</header>\n\n<p class=\"button black heightfifth\"></p>\n\n<a href=\"#\" class=\"button heightfiftheen first\"><span>"
+    + "<span class=\"spanicon closer\" data-icon=\"&#xe007;\"></span></h1>\n</header>\n\n<p class=\"button black heightfifth\"></p>\n\n<a href=\"#\" class=\"button heightfiftheen first\"><span>"
     + escapeExpression(((stack1 = ((stack1 = depth0.details),stack1 == null || stack1 === false ? stack1 : stack1.cost)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</span></a>\n<a href=\"#\" class=\"button heightfiftheen second\"><span>"
     + escapeExpression(((stack1 = ((stack1 = depth0.details),stack1 == null || stack1 === false ? stack1 : stack1.distance)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
@@ -77,7 +77,7 @@ function program2(depth0,data) {
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</h1>\n</header>\n\n<a href=\"#\" id=\"btnAdd\" class=\"button heightfifth orange fixed\"><span>Add checkpoint</span></a>\n\n";
+    + "<span class=\"spanicon closer\" data-icon=\"&#xe007;\"></span></h1>\n</header>\n\n<a href=\"#\" id=\"btnAdd\" class=\"button heightfifth orange fixed\"><span>Add checkpoint<span class=\"spanicon closer\" data-icon=\"&#xe003;\"></span></span></a>\n\n";
   stack1 = helpers['if'].call(depth0, depth0.checkpoints, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n\n<p class=\"button black heightfifth\"></p>\n\n<a href=\"";
@@ -100,11 +100,11 @@ function program1(depth0,data) {
   if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "\" class=\"btnCheckpoint button first heightfifth\"><span>";
+    + "\" class=\"btnDelete button first heightfifth\"><span>";
   if (stack1 = helpers.username) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.username; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</span></a>\n";
+    + "<span class=\"spanicon closer\" data-icon=\"&#xe002;\"></span></span></a>\n";
   return buffer;
   }
 
@@ -112,7 +112,7 @@ function program1(depth0,data) {
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</h1>\n</header>\n\n<input type=\"text\" name=\"txtSearch\" id=\"txtSearch\" placeholder=\"Add a friend...\" class=\"button heightfifth orange fixed\" />\n\n<p class=\"button black heightfifth\"></p>\n\n<ul id=\"searchresults\"></ul>\n\n";
+    + "<span class=\"spanicon closer\" data-icon=\"&#xe008;\"></span></h1>\n</header>\n\n<input type=\"text\" name=\"txtSearch\" id=\"txtSearch\" placeholder=\"Add a friend...\" class=\"button heightfifth orange fixed\" />\n\n<p class=\"button black heightfifth\"></p>\n\n<ul id=\"searchresults\"></ul>\n\n";
   stack1 = helpers.each.call(depth0, depth0.friends, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n\n<p class=\"button black heightfifth\"></p>\n\n<a href=\"";
@@ -129,7 +129,7 @@ helpers = helpers || Handlebars.helpers; data = data || {};
   
 
 
-  return "<header class=\"button heightfifth\">\n    <h1>Tripin'</h1>\n</header>\n\n<p class=\"button black heightfifth\"></p>\n\n<form action=\"/login\" method=\"post\">\n    <fieldset>\n        <input type=\"text\" name=\"txtUsername\" id=\"txtUsername\" tabindex=\"1\"  placeholder=\"Username\" class=\"button heightthird first\" />\n        <input type=\"password\" name=\"txtPassword\" id=\"txtPassword\" tabindex=\"2\" placeholder=\"Password\" class=\"button heightthird second\" />\n        <input type=\"submit\" name=\"btnSubmit\" id=\"btnSubmit\" tabindex=\"3\" value=\"Sign in\" class=\"button heightthird orange\" />\n    </fieldset>\n</form>\n\n<a href=\"#\" id=\"btnRegister\" class=\"button heightfifth black\"><span>Sign up</span></a>\n\n";
+  return "<header class=\"button heightfifth\">\n    <h1>Tripin'</h1>\n</header>\n\n<p class=\"button black heightfifth\"></p>\n\n<form action=\"/login\" method=\"post\">\n    <fieldset>\n        <input type=\"text\" name=\"txtUsername\" id=\"txtUsername\" tabindex=\"1\"  placeholder=\"Username\" class=\"button heightthird first\" />\n        <input type=\"password\" name=\"txtPassword\" id=\"txtPassword\" tabindex=\"2\" placeholder=\"Password\" class=\"button heightthird second\" />\n        <input type=\"submit\" name=\"btnSubmit\" id=\"btnSubmit\" tabindex=\"3\" value=\"Sign in\" class=\"button heightthird orange\" />\n    </fieldset>\n</form>\n\n<a href=\"#\" id=\"btnRegister\" class=\"button heightfifth black\"><span>Sign up<span class=\"spanicon closer\" data-icon=\"&#xe004;\"></span></span></a>\n\n";
   });
 
 this["tpl"]["menu"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -201,19 +201,19 @@ helpers = helpers || Handlebars.helpers; data = data || {};
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</h1>\n</header>\n\n<p class=\"button black heightfifth\"></p>\n\n<a href=\"";
+    + "<span class=\"spanicon closer\" data-icon=\"&#xe006;\"></span></h1>\n</header>\n\n<p class=\"button black heightfifth\"></p>\n\n<a href=\"";
   if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "\" id=\"btnCheckpoints\" class=\"button heightfifth first\"><span>Checkpoints</span></a>\n<a href=\"";
+    + "\" id=\"btnCheckpoints\" class=\"button heightfifth first\"><span>Checkpoints<span class=\"spanicon closer\" data-icon=\"&#xe007;\"></span></span></a>\n<a href=\"";
   if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "\" id=\"btnFriends\" class=\"button heightfifth second\"><span>Friends</span></a>\n<a href=\"";
+    + "\" id=\"btnFriends\" class=\"button heightfifth second\"><span>Friends<span class=\"spanicon closer\" data-icon=\"&#xe008;\"></span></span></a>\n<a href=\"";
   if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "\" id=\"btnBasics\" class=\"button heightfifth third\"><span>Basics</span></a>\n<a href=\"";
+    + "\" id=\"btnBasics\" class=\"button heightfifth third\"><span>Basics<span class=\"spanicon closer\" data-icon=\"&#xe009;\"></span></span></a>\n<a href=\"";
   if (stack1 = helpers.id) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
@@ -241,7 +241,7 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  buffer += "<header class=\"button heightfifth\">\n    <h1>Trips</h1>\n</header>\n\n<a href=\"#\" id=\"btnAdd\" class=\"button heightfifth orange fixed\"><span>Add trip</span></a>\n\n<p class=\"button black heightfifth\"></p>\n\n";
+  buffer += "<header class=\"button heightfifth\">\n    <h1>Trips<span class=\"spanicon closer\" data-icon=\"&#xe006;\"></span></h1>\n</header>\n\n<a href=\"#\" id=\"btnAdd\" class=\"button heightfifth orange fixed\"><span>Add trip<span class=\"spanicon closer\" data-icon=\"&#xe003;\"></span></span></a>\n\n<p class=\"button black heightfifth\"></p>\n\n";
   stack1 = helpers.each.call(depth0, depth0.trips, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n\n<p class=\"button black heightfifth\"></p>\n\n";
@@ -372,7 +372,7 @@ var ViewCheckpointDetails = Backbone.View.extend
 
         $.ajax
         ({
-            url: Util.api + '/deletecheckpoint/' + $(e.currentTarget).attr('href'),
+            url: Util.api + '/deletecheckpoint/' + $(e.currentTarget).attr('href') + '/' + $.cookie('userId'),
             type: 'delete',
             success: function(res)
             {
@@ -446,6 +446,8 @@ var ViewCheckpoints = Backbone.View.extend
 });
 
 /* globals ViewSearchResult:true */
+/* globals ModelNewUserTrip:true */
+/* globals Util:true */
 
 var ViewFriends = Backbone.View.extend
 ({
@@ -462,7 +464,53 @@ var ViewFriends = Backbone.View.extend
 
     events:
     {
-        'keyup #txtSearch': 'searchHandler'
+        'click #btnClose': 'closeHandler',
+        'keyup #txtSearch': 'searchHandler',
+        'click .btnResult': 'addUserHandler',
+        'click .btnDelete': 'deleteHandler'
+    },
+
+    deleteHandler: function(e)
+    {
+        e.preventDefault();
+
+        var self = this;
+
+        $.ajax
+        ({
+            url: Util.api + '/deleteusertrip/' + $(e.currentTarget).attr('href') + '/' + $.cookie('tripId'),
+            type: 'delete',
+            success: function(res)
+            {
+                self.trigger('delete_done', $.cookie('tripId'));
+            }
+        });
+    },
+
+    addUserHandler: function(e)
+    {
+        e.preventDefault();
+
+        var userId = $(e.currentTarget).attr('href');
+        
+        var modelNewUserTrip = new ModelNewUserTrip
+        ({
+            tripid: $.cookie('tripId'),
+            userid: userId
+        });
+
+        var self = this;
+
+        modelNewUserTrip.save({}, {success: function(model, res)
+        {
+            self.trigger('user_added', $.cookie('tripId'));
+        }});
+    },
+
+    closeHandler: function(e)
+    {
+        e.preventDefault();
+        this.trigger('close_clicked', $(e.currentTarget).attr('href'));
     },
 
     searchHandler: function()
@@ -933,6 +981,11 @@ var ViewTrips = Backbone.View.extend
     }
 });
 
+var CollectionTripUsers = Backbone.Collection.extend
+({
+
+});
+
 /* globals ModelTrip:true, Util:true */
 var CollectionTrips = Backbone.Collection.extend
 ({
@@ -1053,9 +1106,13 @@ var App = Backbone.View.extend
 
     friendsHandler: function($trip_id)
     {
+        this.fetchCollection();
         var modelFriends = this.collectionTrips.findWhere({id: $trip_id});
         this.viewFriends = new ViewFriends({model: modelFriends, collection:this.collectionUsers});
         this.$el.html(this.viewFriends.render().$el);
+        this.viewFriends.on('close_clicked', this.loadTripOverview);
+        this.viewFriends.on('user_added', this.friendsHandler);
+        this.viewFriends.on('delete_done', this.friendsHandler);
         this.showMenu();
     },
 

@@ -103,9 +103,13 @@ var App = Backbone.View.extend
 
     friendsHandler: function($trip_id)
     {
+        this.fetchCollection();
         var modelFriends = this.collectionTrips.findWhere({id: $trip_id});
         this.viewFriends = new ViewFriends({model: modelFriends, collection:this.collectionUsers});
         this.$el.html(this.viewFriends.render().$el);
+        this.viewFriends.on('close_clicked', this.loadTripOverview);
+        this.viewFriends.on('user_added', this.friendsHandler);
+        this.viewFriends.on('delete_done', this.friendsHandler);
         this.showMenu();
     },
 
